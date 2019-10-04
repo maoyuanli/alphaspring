@@ -17,19 +17,5 @@ public class AlphaspringApplication {
         SpringApplication.run(AlphaspringApplication.class, args);
     }
 
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
-    }
-
-    @Bean
-    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-        return args -> {
-            Quote quote = restTemplate.getForObject(
-                    "https://www.quandl.com/api/v3/datasets/EURONEXT/ADYEN.json?api_key=f_tQibQDxz8s2CABjKZU", Quote.class);
-            log.info(quote.toString());
-            System.out.println(quote.toString());
-        };
-    }
 
 }
