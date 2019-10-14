@@ -1,6 +1,5 @@
-package com.alphasmart.alphaspring;
+package com.alphasmart.alphaspring.models;
 
-import com.alphasmart.alphaspring.Dataset;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

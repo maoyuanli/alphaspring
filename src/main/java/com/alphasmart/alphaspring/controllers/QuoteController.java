@@ -1,5 +1,6 @@
-package com.alphasmart.alphaspring;
+package com.alphasmart.alphaspring.controllers;
 
+import com.alphasmart.alphaspring.models.Quote;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -22,7 +23,6 @@ import java.util.Date;
 @CrossOrigin(origins = "*")
 public class QuoteController {
     Logger log = LoggerFactory.getLogger(QuoteController.class);
-    final String apiKey = "f_tQibQDxz8s2CABjKZU";
     private String urlPrefix = "https://www.quandl.com/api/v3/datasets/EURONEXT/%s.json?api_key=f_tQibQDxz8s2CABjKZU&start_date=%s&end_date=%s";
     private ArrayList<String> startEndDate = startAndEndDate(1);
     private String startDate = startEndDate.get(0);
