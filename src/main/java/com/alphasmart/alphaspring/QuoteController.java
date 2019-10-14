@@ -1,8 +1,11 @@
 package com.alphasmart.alphaspring;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +21,7 @@ import java.util.Date;
 @RestController
 @CrossOrigin(origins = "*")
 public class QuoteController {
+    Logger log = LoggerFactory.getLogger(QuoteController.class);
     final String apiKey = "f_tQibQDxz8s2CABjKZU";
     private String urlPrefix = "https://www.quandl.com/api/v3/datasets/EURONEXT/%s.json?api_key=f_tQibQDxz8s2CABjKZU&start_date=%s&end_date=%s";
     private ArrayList<String> startEndDate = startAndEndDate(1);
@@ -36,12 +40,19 @@ public class QuoteController {
         JsonArray quoteJsonArray = new JsonArray();
         for (int i = 0; i < tickers.size(); i++) {
             String quandlUrl = String.format(urlPrefix, tickers.get(i),startDate,endDate);
-            String strResult = restTemplate.getForObject(quandlUrl, String.class);
-            JsonObject jsonResult = (JsonObject) new JsonParser().parse(strResult);
+            Quote quote = restTemplate.getForObject(quandlUrl, Quote.class);
+//            log.info(quote.toString());
+            Gson gson = new Gson();
+            String quoteGson = gson.toJson(quote);
+//            log.info(quoteGson);
+            JsonObject jsonResult = (JsonObject) new JsonParser().parse(quoteGson);
             quoteJsonArray.add(jsonResult);
         }
-
-        String quoteRsltStr = "{" + "\"quotes\":" + quoteJsonArray.toString() + "}";
+        log.info("quoteJsonArray.toString() : \n "+quoteJsonArray.toString());
+        JsonObject bundled = new JsonObject();
+        bundled.addProperty("quotes",quoteJsonArray.toString());
+        String quoteRsltStr = bundled.toString();
+//        log.info(quoteRsltStr);
         return quoteRsltStr;
     }
 
