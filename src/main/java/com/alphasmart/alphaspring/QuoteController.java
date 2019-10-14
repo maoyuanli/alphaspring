@@ -41,18 +41,14 @@ public class QuoteController {
         for (int i = 0; i < tickers.size(); i++) {
             String quandlUrl = String.format(urlPrefix, tickers.get(i),startDate,endDate);
             Quote quote = restTemplate.getForObject(quandlUrl, Quote.class);
-//            log.info(quote.toString());
             Gson gson = new Gson();
             String quoteGson = gson.toJson(quote);
-//            log.info(quoteGson);
             JsonObject jsonResult = (JsonObject) new JsonParser().parse(quoteGson);
             quoteJsonArray.add(jsonResult);
         }
-        log.info("quoteJsonArray.toString() : \n "+quoteJsonArray.toString());
         JsonObject bundled = new JsonObject();
-        bundled.addProperty("quotes",quoteJsonArray.toString());
+        bundled.add("quotes",quoteJsonArray);
         String quoteRsltStr = bundled.toString();
-//        log.info(quoteRsltStr);
         return quoteRsltStr;
     }
 
