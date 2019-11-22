@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -21,7 +20,8 @@ import java.util.Date;
 public class StockQuotes {
     Logger log = LoggerFactory.getLogger(StockQuotesController.class);
     private String urlPrefix = "https://www.quandl.com/api/v3/datasets/EURONEXT/%s.json?api_key=f_tQibQDxz8s2CABjKZU&start_date=%s&end_date=%s";
-    private ArrayList<String> tickers = new ArrayList<String>(Arrays.asList("ABN", "ADYEN", "INGA", "KPN", "RDSA", "BNP"));
+//    private ArrayList<String> tickers = new ArrayList<String>(Arrays.asList("ABN", "ADYEN", "INGA", "KPN", "RDSA", "BNP"));
+    private ArrayList<String> tickers = TickersAndSources.getTickers();
     private ArrayList<String> startEndDate = startAndEndDate(1);
     private String startDate = startEndDate.get(0);
     private String endDate = startEndDate.get(1);
