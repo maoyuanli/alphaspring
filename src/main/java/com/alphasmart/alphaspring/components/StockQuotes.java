@@ -1,6 +1,5 @@
 package com.alphasmart.alphaspring.components;
 
-import com.alphasmart.alphaspring.controllers.StockQuotesController;
 import com.alphasmart.alphaspring.models.Quote;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -18,9 +17,9 @@ import java.util.Date;
 
 @Component
 public class StockQuotes {
-    Logger log = LoggerFactory.getLogger(StockQuotesController.class);
+    public static final Logger log = LoggerFactory.getLogger(StockQuotes.class);
+
     private String urlPrefix = "https://www.quandl.com/api/v3/datasets/EURONEXT/%s.json?api_key=f_tQibQDxz8s2CABjKZU&start_date=%s&end_date=%s";
-//    private ArrayList<String> tickers = new ArrayList<String>(Arrays.asList("ABN", "ADYEN", "INGA", "KPN", "RDSA", "BNP"));
     private ArrayList<String> tickers = TickersAndSources.getTickers();
     private ArrayList<String> startEndDate = startAndEndDate(1);
     private String startDate = startEndDate.get(0);

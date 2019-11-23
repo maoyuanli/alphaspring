@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.sun.xml.bind.v2.TODO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 @Component
 public class StockTweets {
-    public static Logger log = LoggerFactory.getLogger(StockTweets.class);
+    public static final Logger log = LoggerFactory.getLogger(StockTweets.class);
 
     public String tweetsList() {
         String queryStr = tweetQueryBuilder();
@@ -42,7 +43,7 @@ public class StockTweets {
             tweetWrapped.add("tweets", tweetsJson);
             tweetRsltStr = tweetWrapped.toString();
         } catch (TwitterException e) {
-            StockTweets.log.info(e.toString());
+            //ToDo
         }
         return tweetRsltStr;
     }
