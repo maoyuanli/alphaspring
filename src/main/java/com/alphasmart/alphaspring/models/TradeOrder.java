@@ -1,7 +1,6 @@
 package com.alphasmart.alphaspring.models;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;

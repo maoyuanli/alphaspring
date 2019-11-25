@@ -18,4 +18,6 @@ public class TraderOrderDAOService {
         return tradeOrder.getId();
     }
 
+
+
 }
