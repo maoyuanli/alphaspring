@@ -9,9 +9,7 @@ import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -33,10 +31,9 @@ public class TradeOrderController {
         return orderStrRslt;
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "api/setorder")
-    public String setTradeOrder(ModelMap model, @Valid TradeOrder tradeOrder, BindingResult result){
-        traderOrderRepository.save(tradeOrder);
-        return String.valueOf(tradeOrder);
+    @PostMapping("api/setorder")
+    public TradeOrder newTradeOrder(@RequestBody TradeOrder newTradeOrder){
+        return traderOrderRepository.save(newTradeOrder);
     }
 
 }
