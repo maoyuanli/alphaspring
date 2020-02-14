@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,15 +48,12 @@ public class StockQuotes {
         return quoteRsltStr;
     }
 
-    public static ArrayList<String> startAndEndDate(int yearAgo) {
+    public static ArrayList<String> startAndEndDate(long yearAgo) {
         ArrayList<String> dateRangePair = new ArrayList<String>();
-        Calendar cal = Calendar.getInstance();
-        Date today = cal.getInstance().getTime();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String strToday = simpleDateFormat.format(today);
-        cal.add(Calendar.YEAR, -yearAgo);
-        Date oneYrAgo = cal.getTime();
-        String strOneYrAgo = simpleDateFormat.format(oneYrAgo);
+        LocalDate today = LocalDate.now();
+        String strToday = today.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate oneYrAgo = today.minusYears(yearAgo);
+        String strOneYrAgo = oneYrAgo.format(DateTimeFormatter.ISO_LOCAL_DATE);
         dateRangePair.add(strOneYrAgo);
         dateRangePair.add(strToday);
         return dateRangePair;
