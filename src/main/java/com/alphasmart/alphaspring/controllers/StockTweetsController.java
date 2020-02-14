@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*")
 public class StockTweetsController {
-    public static final Logger log = LoggerFactory.getLogger(StockTweetsController.class);
 
     @Autowired
     StockTweets stockTweets;

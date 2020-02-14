@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*")
 public class StockQuotesController {
-    public static final Logger log = LoggerFactory.getLogger(StockQuotesController.class);
 
     @Autowired
     StockQuotes stockQuotes;

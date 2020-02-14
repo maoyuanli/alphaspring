@@ -17,7 +17,6 @@ import java.util.Date;
 
 @Component
 public class StockQuotes {
-    public static final Logger log = LoggerFactory.getLogger(StockQuotes.class);
 
     private String urlPrefix = "https://www.quandl.com/api/v3/datasets/EURONEXT/%s.json?api_key=f_tQibQDxz8s2CABjKZU&start_date=%s&end_date=%s";
     private ArrayList<String> tickers = TickersAndSources.getTickers();

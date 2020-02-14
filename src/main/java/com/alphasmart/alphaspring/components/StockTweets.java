@@ -24,7 +24,6 @@ import twitter4j.conf.ConfigurationBuilder;
 
 @Component
 public class StockTweets {
-    public static final Logger log = LoggerFactory.getLogger(StockTweets.class);
 
     public String tweetsList() {
         String queryStr = tweetQueryBuilder();
