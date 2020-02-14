@@ -48,14 +48,18 @@ public class StockQuotes {
         return quoteRsltStr;
     }
 
-    public static ArrayList<String> startAndEndDate(long yearAgo) {
+    public ArrayList<String> startAndEndDate(long yearAgo) {
         ArrayList<String> dateRangePair = new ArrayList<String>();
-        LocalDate today = LocalDate.now();
+        LocalDate today = getToday();
         String strToday = today.format(DateTimeFormatter.ISO_LOCAL_DATE);
         LocalDate oneYrAgo = today.minusYears(yearAgo);
         String strOneYrAgo = oneYrAgo.format(DateTimeFormatter.ISO_LOCAL_DATE);
         dateRangePair.add(strOneYrAgo);
         dateRangePair.add(strToday);
         return dateRangePair;
+    }
+
+    public LocalDate getToday(){
+        return LocalDate.now();
     }
 }
