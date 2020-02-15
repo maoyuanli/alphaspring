@@ -1,15 +1,13 @@
 package com.alphasmart.alphaspring.components;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.sun.xml.bind.v2.TODO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import twitter4j.Query;
 import twitter4j.QueryResult;
@@ -67,14 +65,16 @@ public class StockTweets {
 
     public static Twitter twitterInstance() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
+        TokenFetcher tokenFetcher = new TokenFetcher();
+        HashMap<String, String> twitterTokens = tokenFetcher.fetchToken("token.json");
+
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("BhUKZxdqhPEylXHSG4dXl42TB")
-                .setOAuthConsumerSecret("oxo2R7n47xBVnvyjojZuYfg4AfX7R7NgUPYNyZBQi8JsoUfjHs")
-                .setOAuthAccessToken("3225745957-jwvwQAWknVkZDSuHjwTDHcZIglDICUYZtSbjX9i")
-                .setOAuthAccessTokenSecret("bhC6p8Q5niKg5zQpx6JTqTFWepeeSMBq8JsNscorfoNgk");
+                .setOAuthConsumerKey(twitterTokens.get("api_key"))
+                .setOAuthConsumerSecret(twitterTokens.get("api_secret"))
+                .setOAuthAccessToken(twitterTokens.get("access_token"))
+                .setOAuthAccessTokenSecret(twitterTokens.get("access_secret"));
         TwitterFactory tf = new TwitterFactory(cb.build());
-        Twitter twitter = tf.getInstance();
-        return twitter;
+        return tf.getInstance();
     }
 
 }

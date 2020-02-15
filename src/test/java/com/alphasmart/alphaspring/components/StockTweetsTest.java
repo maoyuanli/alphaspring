@@ -2,24 +2,22 @@ package com.alphasmart.alphaspring.components;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class StockTweetsTest {
 
     @Test
     void tweetQueryBuilder() {
-        String query = StockTweets.tweetQueryBuilder();
-        System.out.println(query);
-        assert query.length()>0;
+        String expectedSearchQuery =
+                "FROM:marketwatch OR FROM:wsj OR FROM:ft OR FROM:business OR FROM:theeconomist OR FROM:cnbc OR FROM:barronsonline";
+        assertEquals(expectedSearchQuery,StockTweets.tweetQueryBuilder());
     }
 
     @Test
     void tweetsList() {
         StockTweets stockTweets = new StockTweets();
         String payload = stockTweets.tweetsList();
-        System.out.println(payload);
-        assert payload.length() > 0;
+        assert(payload.length()>0);
     }
 
-    @Test
-    void twitterInstance() {
-    }
 }

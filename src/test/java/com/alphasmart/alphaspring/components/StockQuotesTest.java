@@ -19,14 +19,6 @@ class StockQuotesTest {
     }
 
     @Test
-    void getQuote() {
-    }
-
-    @Test
-    void quotesBundler() {
-    }
-
-    @Test
     void startAndEndDate() {
         List<String> expectBeginEndDate = Arrays.asList("2019-03-01","2020-03-01");
         LocalDate fakeToday = LocalDate.of(2020,3,1);
