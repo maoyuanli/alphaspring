@@ -8,6 +8,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import twitter4j.Query;
 import twitter4j.QueryResult;
@@ -22,6 +24,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 @Component
 public class StockTweets {
+    private static final Logger logger = LogManager.getLogger(StockTweets.class);
 
     public String tweetsList() {
         String queryStr = tweetQueryBuilder();
@@ -40,7 +43,7 @@ public class StockTweets {
             tweetWrapped.add("tweets", tweetsJson);
             tweetRsltStr = tweetWrapped.toString();
         } catch (TwitterException e) {
-            //ToDo
+            logger.info(e.getMessage());
         }
         return tweetRsltStr;
     }

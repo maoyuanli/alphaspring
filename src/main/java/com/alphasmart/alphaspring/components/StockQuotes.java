@@ -25,25 +25,23 @@ public class StockQuotes {
     private String endDate = startEndDate.get(1);
 
     public String GetQuote() {
-        String quoteRsltStr = quotesBundler(tickers);
-        return quoteRsltStr;
+        return quotesBundler(tickers);
     }
 
     public String quotesBundler(ArrayList<String> tickers) {
         RestTemplate restTemplate = new RestTemplate();
         JsonArray quoteJsonArray = new JsonArray();
-        for (int i = 0; i < tickers.size(); i++) {
-            String quandlUrl = String.format(QUANDL_API_URL, tickers.get(i), startDate, endDate);
+        tickers.forEach(ticker->{
+            String quandlUrl = String.format(QUANDL_API_URL, ticker, startDate, endDate);
             Quote quote = restTemplate.getForObject(quandlUrl, Quote.class);
             Gson gson = new Gson();
             String quoteGson = gson.toJson(quote);
             JsonObject jsonResult = (JsonObject) new JsonParser().parse(quoteGson);
             quoteJsonArray.add(jsonResult);
-        }
+        });
         JsonObject bundled = new JsonObject();
         bundled.add("quotes", quoteJsonArray);
-        String quoteRsltStr = bundled.toString();
-        return quoteRsltStr;
+        return bundled.toString();
     }
 
     public ArrayList<String> startAndEndDate(long yearAgo) {
