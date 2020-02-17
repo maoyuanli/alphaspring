@@ -25,9 +25,11 @@ import twitter4j.conf.ConfigurationBuilder;
 @Component
 public class StockTweets {
     private static final Logger logger = LogManager.getLogger(StockTweets.class);
+    private static final List<String> tweetSources = TickersAndSources.getSources();
+    private static TweetSearchQueryBuilder queryBuilder = new TweetSearchQueryBuilder();
+    private static String queryStr = queryBuilder.buildQueryFromList(tweetSources);
 
     public String tweetsList() {
-        String queryStr = tweetQueryBuilder();
         Twitter twitter = twitterInstance();
         Query query = new Query();
         query.count(100).setLang("en");
@@ -46,23 +48,6 @@ public class StockTweets {
             logger.info(e.getMessage());
         }
         return tweetRsltStr;
-    }
-
-    public static String tweetQueryBuilder() {
-
-        String fromPrefix = "FROM:";
-        String orPrefix = " OR ";
-        StringBuilder query = new StringBuilder();
-        ArrayList<String> sources = TickersAndSources.getSources();
-        for (int i = 0; i < sources.size(); i++) {
-            if (!(i == sources.size() - 1)) {
-                query.append(fromPrefix).append(sources.get(i)).append(orPrefix);
-            } else {
-                query.append(fromPrefix).append(sources.get(i));
-            }
-        }
-
-        return query.toString();
     }
 
 
