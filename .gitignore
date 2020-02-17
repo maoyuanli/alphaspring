@@ -29,4 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
-#token.json
+
+### token ###
+token.json
