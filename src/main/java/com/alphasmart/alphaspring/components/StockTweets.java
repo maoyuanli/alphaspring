@@ -25,9 +25,9 @@ import twitter4j.conf.ConfigurationBuilder;
 @Component
 public class StockTweets {
     private static final Logger logger = LogManager.getLogger(StockTweets.class);
-    private static final List<String> tweetSources = TickersAndSources.getSources();
-    private static TweetSearchQueryBuilder queryBuilder = new TweetSearchQueryBuilder();
-    private static String queryStr = queryBuilder.buildQueryFromList(tweetSources);
+
+    private static TweetSearchQuery query = new TweetSearchQuery(TickersAndSources.getSources());
+    private static String queryStr = query.getQueryString();
 
     public String tweetsList() {
         Twitter twitter = twitterInstance();

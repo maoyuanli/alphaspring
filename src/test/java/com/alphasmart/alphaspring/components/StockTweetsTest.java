@@ -4,8 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StockTweetsTest {
@@ -16,12 +14,8 @@ class StockTweetsTest {
 
     @Test
     void testTweetSearchQueryBuilder() {
-        TweetSearchQueryBuilder builder = new TweetSearchQueryBuilder();
-        List<String> sources = TickersAndSources.getSources();
-        logger.info(sources);
-        String actualOutput = builder.buildQueryFromList(sources);
-        logger.info(actualOutput);
-        assertEquals(expectedSearchQuery,actualOutput);
+        TweetSearchQuery tweetSearchQuery = new TweetSearchQuery(TickersAndSources.getSources());
+        assertEquals(expectedSearchQuery,tweetSearchQuery.getQueryString());
     }
 
     @Test
