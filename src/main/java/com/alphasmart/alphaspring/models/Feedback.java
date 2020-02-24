@@ -20,7 +20,7 @@ public class Feedback {
     private String comment;
 
     @JsonProperty("feedback")
-    private void unpackRawFeedback(Map<String,String> feedback){
+    private void unpackRawFeedback(Map<String, String> feedback) {
         this.name = (String) feedback.get("name");
         this.email = (String) feedback.get("email");
         this.phone = (String) feedback.get("phone");
