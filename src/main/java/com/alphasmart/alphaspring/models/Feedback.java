@@ -1,10 +1,10 @@
 package com.alphasmart.alphaspring.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.Map;
 
 @Entity
@@ -18,6 +18,9 @@ public class Feedback {
     private String email;
     private String phone;
     private String comment;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
 
     @JsonProperty("feedback")
     private void unpackRawFeedback(Map<String, String> feedback) {
