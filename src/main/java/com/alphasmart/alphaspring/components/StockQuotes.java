@@ -24,7 +24,7 @@ public class StockQuotes {
     private String startDate = startEndDate.get(0);
     private String endDate = startEndDate.get(1);
 
-    public String GetQuote() {
+    public String getQuote() {
         return quotesBundler(tickers);
     }
 
