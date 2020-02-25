@@ -10,7 +10,7 @@ public class TradeOrder {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private String ticker;
     private String companyName;
     private String orderType;
@@ -32,7 +32,7 @@ public class TradeOrder {
         this.orderVolumn = orderVolumn;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

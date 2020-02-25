@@ -17,7 +17,7 @@ public class TraderOrderDAOServiceCMDLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         TradeOrder tradeOrder = new TradeOrder("ABN","ABN AMRO BANK N.V.","Market Order",11.90,2000);
-        Integer rslt =  traderOrderDAOService.insert(tradeOrder);
+        Long rslt =  traderOrderDAOService.insert(tradeOrder);
         log.info(String.valueOf(tradeOrder));
     }
 }

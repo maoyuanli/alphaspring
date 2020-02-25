@@ -13,7 +13,7 @@ public class TraderOrderDAOService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Integer insert(TradeOrder tradeOrder){
+    public Long insert(TradeOrder tradeOrder){
         entityManager.persist(tradeOrder);
         return tradeOrder.getId();
     }
