@@ -17,7 +17,7 @@ public class TradeOrderController {
     @Autowired
     TraderOrderRepository traderOrderRepository;
 
-    @RequestMapping(method = RequestMethod.GET, path = "api/getorder")
+    @GetMapping("api/getorder")
     public String getTradeOrder(){
         List<TradeOrder> orders = traderOrderRepository.findAll();
         Gson gson = new Gson();
