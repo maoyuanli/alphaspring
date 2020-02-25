@@ -1,9 +1,11 @@
 package com.alphasmart.alphaspring.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Map;
 
 @Entity
 public class TradeOrder {
@@ -12,21 +14,27 @@ public class TradeOrder {
     @GeneratedValue
     private Long id;
     private String ticker;
-    private String companyName;
     private String orderType;
-    private Double orderPrice;
-    private Integer orderVolumn;
+    private String orderPrice;
+    private String orderVolumn;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
+
+    @JsonProperty("order")
+    private void unpackRawTradeOrder(Map<String,Object> order){
+        this.ticker = (String) order.get("ticker");
+        this.orderType = (String) order.get("order_type");
+        this.orderPrice = (String)order.get("order_price");
+        this.orderVolumn = (String) order.get("order_volumn");
+    }
 
 
     protected TradeOrder() {
     }
 
-    public TradeOrder(String ticker, String companyName, String orderType, Double orderPrice, Integer orderVolumn) {
+    public TradeOrder(String ticker, String companyName, String orderType, String orderPrice, String orderVolumn) {
         this.ticker = ticker;
-        this.companyName = companyName;
         this.orderType = orderType;
         this.orderPrice = orderPrice;
         this.orderVolumn = orderVolumn;
@@ -40,19 +48,15 @@ public class TradeOrder {
         return ticker;
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
-
     public String getOrderType() {
         return orderType;
     }
 
-    public Double getOrderPrice() {
+    public String getOrderPrice() {
         return orderPrice;
     }
 
-    public Integer getOrderVolumn() {
+    public String getOrderVolumn() {
         return orderVolumn;
     }
 
@@ -65,7 +69,6 @@ public class TradeOrder {
         return "TradeOrder{" +
                 "id=" + id +
                 ", ticker='" + ticker + '\'' +
-                ", companyName='" + companyName + '\'' +
                 ", orderType=" + orderType +
                 ", orderPrice=" + orderPrice +
                 ", orderVolumn=" + orderVolumn +
