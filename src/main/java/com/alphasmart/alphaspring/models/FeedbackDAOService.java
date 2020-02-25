@@ -13,7 +13,7 @@ public class FeedbackDAOService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Integer insert(Feedback feedback){
+    public Long insert(Feedback feedback){
         entityManager.persist(feedback);
         return feedback.getId();
     }
