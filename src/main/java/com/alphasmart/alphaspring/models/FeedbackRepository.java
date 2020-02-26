@@ -1,6 +1,10 @@
 package com.alphasmart.alphaspring.models;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
+import java.util.List;
+import java.util.Optional;
+
+public interface FeedbackRepository extends CrudRepository<Feedback, Long> {
+    Optional<List<Feedback>> findFeedbacksByEmail(String email);
 }

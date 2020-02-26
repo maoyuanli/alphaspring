@@ -1,6 +1,6 @@
 package com.alphasmart.alphaspring.models;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface TraderOrderRepository extends JpaRepository<TradeOrder, Long> {
+public interface TraderOrderRepository extends CrudRepository<TradeOrder, Long> {
 }

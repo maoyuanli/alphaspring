@@ -19,7 +19,7 @@ public class TradeOrderController {
 
     @GetMapping("api/getorder")
     public String getTradeOrder(){
-        List<TradeOrder> orders = traderOrderRepository.findAll();
+        List<TradeOrder> orders = (List<TradeOrder>) traderOrderRepository.findAll();
         Gson gson = new Gson();
         String ordersStr = gson.toJson(orders);
         JsonArray orderJsonArr = (JsonArray) new JsonParser().parse(ordersStr);

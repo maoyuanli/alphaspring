@@ -11,7 +11,7 @@ import java.util.Map;
 public class TradeOrder {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String ticker;
     private String orderType;
@@ -20,6 +20,9 @@ public class TradeOrder {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
+
+    @ManyToOne
+    private TradeAccount tradeAccount;
 
     @JsonProperty("order")
     private void unpackRawTradeOrder(Map<String,Object> order){
@@ -33,7 +36,7 @@ public class TradeOrder {
     protected TradeOrder() {
     }
 
-    public TradeOrder(String ticker, String companyName, String orderType, String orderPrice, String orderVolumn) {
+    public TradeOrder(String ticker, String orderType, String orderPrice, String orderVolumn) {
         this.ticker = ticker;
         this.orderType = orderType;
         this.orderPrice = orderPrice;
@@ -62,6 +65,38 @@ public class TradeOrder {
 
     public Date getCreatedDate() {
         return createdDate;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
+    }
+
+    public void setOrderPrice(String orderPrice) {
+        this.orderPrice = orderPrice;
+    }
+
+    public void setOrderVolumn(String orderVolumn) {
+        this.orderVolumn = orderVolumn;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public TradeAccount getTradeAccount() {
+        return tradeAccount;
+    }
+
+    public void setTradeAccount(TradeAccount tradeAccount) {
+        this.tradeAccount = tradeAccount;
     }
 
     @Override

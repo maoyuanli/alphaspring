@@ -11,7 +11,7 @@ import java.util.Map;
 public class Feedback {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -30,7 +30,7 @@ public class Feedback {
         this.comment = (String) feedback.get("comment");
     }
 
-    public Feedback() {
+    protected Feedback() {
     }
 
     public Feedback(String name, String email, String phone, String comment) {
