@@ -13,7 +13,6 @@ public class TradeAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String accountNo;
-
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "tradeAccount")
     private List<TradeOrder> tradeOrders;
 
