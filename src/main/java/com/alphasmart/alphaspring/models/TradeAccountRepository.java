@@ -2,5 +2,5 @@ package com.alphasmart.alphaspring.models;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface TraderOrderRepository extends CrudRepository<TradeOrder, Long> {
+public interface TradeAccountRepository extends CrudRepository <TradeAccount, Long>{
 }
