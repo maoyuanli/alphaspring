@@ -21,7 +21,7 @@ public class TradeAccount {
         this.accountNo = (String) account.get("account_no");
     }
 
-    public TradeAccount(){}
+    protected TradeAccount(){}
 
     public TradeAccount(Long id, String accountNo, List<TradeOrder> tradeOrders){
         this.id = id;

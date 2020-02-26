@@ -30,7 +30,7 @@ public class Feedback {
         this.comment = (String) feedback.get("comment");
     }
 
-    public Feedback() {
+    protected Feedback() {
     }
 
     public Feedback(String name, String email, String phone, String comment) {
