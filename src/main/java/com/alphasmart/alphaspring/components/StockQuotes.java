@@ -1,6 +1,6 @@
 package com.alphasmart.alphaspring.components;
 
-import com.alphasmart.alphaspring.models.Quote;
+import com.alphasmart.alphaspring.entities.Quote;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

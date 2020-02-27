@@ -1,5 +1,6 @@
-package com.alphasmart.alphaspring.models;
+package com.alphasmart.alphaspring.repositories;
 
+import com.alphasmart.alphaspring.entities.TradeAccount;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
 package com.alphasmart.alphaspring.controllers;
 
-import com.alphasmart.alphaspring.models.TradeOrder;
-import com.alphasmart.alphaspring.models.TraderOrderRepository;
+import com.alphasmart.alphaspring.entities.TradeOrder;
+import com.alphasmart.alphaspring.services.TradeOrderService;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -15,11 +15,11 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class TradeOrderController {
     @Autowired
-    TraderOrderRepository traderOrderRepository;
+    TradeOrderService tradeOrderService;
 
     @GetMapping("api/getorder")
     public String getTradeOrder(){
-        List<TradeOrder> orders = (List<TradeOrder>) traderOrderRepository.findAll();
+        List<TradeOrder> orders = tradeOrderService.findAll();
         Gson gson = new Gson();
         String ordersStr = gson.toJson(orders);
         JsonArray orderJsonArr = (JsonArray) new JsonParser().parse(ordersStr);
@@ -31,7 +31,7 @@ public class TradeOrderController {
 
     @PostMapping("api/setorder")
     public TradeOrder newTradeOrder(@RequestBody TradeOrder newTradeOrder){
-        return traderOrderRepository.save(newTradeOrder);
+        return tradeOrderService.save(newTradeOrder);
     }
 
 }

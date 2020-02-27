@@ -1,5 +1,6 @@
-package com.alphasmart.alphaspring.models;
+package com.alphasmart.alphaspring.entities;
 
+import com.alphasmart.alphaspring.repositories.FeedbackRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
