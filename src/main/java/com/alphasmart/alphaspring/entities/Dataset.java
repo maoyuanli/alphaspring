@@ -1,4 +1,4 @@
-package com.alphasmart.alphaspring.models;
+package com.alphasmart.alphaspring.entities;
 
 import java.util.ArrayList;
 

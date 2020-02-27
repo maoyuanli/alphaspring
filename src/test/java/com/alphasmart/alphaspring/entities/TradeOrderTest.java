@@ -1,4 +1,4 @@
-package com.alphasmart.alphaspring.models;
+package com.alphasmart.alphaspring.entities;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
