@@ -35,13 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests()
-                .antMatchers("/**").permitAll();
-
-
-        http.cors().and().csrf().disable();
-        http.headers().frameOptions().disable();
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .csrf().disable()
+            .authorizeRequests()
+            .antMatchers("/api/setaccount/").hasAuthority("ADMIN")
+            .antMatchers("/api/**").permitAll()
+            .and().httpBasic();
     }
 
 }
