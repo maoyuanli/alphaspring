@@ -1,41 +1,43 @@
 package com.alphasmart.alphaspring.security;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Map;
 
 @Entity
-@Table(name="user_accounts")
 public class UserAccount {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_accounts_seq")
-    @Column(name = "user_id")
-    private Long userId;
-    @Column(name = "username")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String userName;
-
     private String email;
-    private String password;
     private boolean enabled=true;
+    private String role;
+    private String password;
+
+
 
     @JsonProperty("user")
     private void unpackRawUserAccount(Map<String, Object> user){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         this.userName = (String) user.get("user_name");
-        this.password = (String) user.get("password");
         this.email = (String) user.get("email");
+        this.role = (String) user.get("role");
+        this.password = bCryptPasswordEncoder.encode((String) user.get("password"));
     }
 
     protected UserAccount() {
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -69,4 +71,13 @@ public class UserAccount {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 }

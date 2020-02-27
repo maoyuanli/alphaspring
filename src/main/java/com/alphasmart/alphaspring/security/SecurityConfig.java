@@ -15,10 +15,10 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final String userNameQuery =
-            "select username, password, enabled from user_accounts where username = ?";
+            "select user_name, password, enabled from user_account where user_name = ?";
 
     private final String authQuery =
-            "select username, role from user_accounts where username = ?";
+            "select user_name, role from user_account where user_name = ?";
 
     @Autowired
     DataSource dataSource;
@@ -37,8 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("api/setaccount").hasRole("ADMIN")
-                .antMatchers("/").permitAll();
+                .antMatchers("/**").authenticated().and().httpBasic();
+
+
         http.cors().and().csrf().disable();
         http.headers().frameOptions().disable();
     }
