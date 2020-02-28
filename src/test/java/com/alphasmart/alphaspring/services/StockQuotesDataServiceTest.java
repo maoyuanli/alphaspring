@@ -1,8 +1,6 @@
 package com.alphasmart.alphaspring.services;
 
 import com.alphasmart.alphaspring.utils.TickersAndSources;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +13,6 @@ import static org.mockito.Mockito.*;
 
 class StockQuotesDataServiceTest {
     StockQuotesDataService stockQuotesDataService;
-    private static final Logger logger = LogManager.getLogger(StockQuotesDataServiceTest.class);
 
     @BeforeEach
     public void setup(){
