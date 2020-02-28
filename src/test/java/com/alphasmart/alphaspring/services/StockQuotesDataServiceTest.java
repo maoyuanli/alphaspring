@@ -1,6 +1,6 @@
-package com.alphasmart.alphaspring.utils;
+package com.alphasmart.alphaspring.services;
 
-import com.alphasmart.alphaspring.services.StockQuotesDataService;
+import com.alphasmart.alphaspring.utils.TickersAndSources;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +32,14 @@ class StockQuotesDataServiceTest {
 
     @Test
     void testQuotesBundler(){
-        logger.info(stockQuotesDataService.quotesBundler(TickersAndSources.getTickers()));
+        String responseBody = stockQuotesDataService.quotesBundler(TickersAndSources.getTickers());
+
+        // required by frontend
+        assertTrue(responseBody.contains("quotes")
+                && responseBody.contains("dataset")
+                && responseBody.contains("newest_available_date")
+                && responseBody.contains("data")
+                && responseBody.contains("Volume") );
     }
 
 }

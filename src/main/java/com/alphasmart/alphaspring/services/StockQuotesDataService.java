@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
-@Component
+@Service
 public class StockQuotesDataService {
 
     private static final String QUANDL_API_URL =
