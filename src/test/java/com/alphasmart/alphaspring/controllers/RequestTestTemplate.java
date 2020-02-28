@@ -1,0 +1,39 @@
+package com.alphasmart.alphaspring.controllers;
+
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
+public class RequestTestTemplate {
+
+
+    public static void testMvcRequest(WebApplicationContext context, String uri, String postContent,
+                                      int expectedStatus, List<String> expectedContentKeywords) throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
+        MvcResult mvcResult;
+        if (postContent != null) {
+            mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri).contentType(MediaType.APPLICATION_JSON).content(postContent)).andReturn();
+        } else {
+            mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri).contentType(MediaType.APPLICATION_JSON)).andReturn();
+        }
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int responseStatus = response.getStatus();
+        String responseContent = response.getContentAsString();
+        assertEquals(expectedStatus, responseStatus);
+        if (expectedContentKeywords != null) {
+            expectedContentKeywords.forEach(keyword ->
+                    assertTrue(responseContent.contains(keyword))
+            );
+        }
+    }
+}
