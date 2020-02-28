@@ -1,6 +1,6 @@
 package com.alphasmart.alphaspring.controllers;
 
-import com.alphasmart.alphaspring.components.StockQuotes;
+import com.alphasmart.alphaspring.services.StockQuotesDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.*;
 public class StockQuotesController {
 
     @Autowired
-    StockQuotes stockQuotes;
+    StockQuotesDataService stockQuotesDataService;
 
     @GetMapping("api/quote")
     public String featuredStocksQuote() {
-        return stockQuotes.getQuote();
+        return stockQuotesDataService.getQuote();
     }
 
 

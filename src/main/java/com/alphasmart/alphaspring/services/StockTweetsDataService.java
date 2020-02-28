@@ -1,9 +1,11 @@
-package com.alphasmart.alphaspring.components;
+package com.alphasmart.alphaspring.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.alphasmart.alphaspring.utils.TickersAndSources;
+import com.alphasmart.alphaspring.utils.TokenFetcher;
+import com.alphasmart.alphaspring.utils.TweetSearchQuery;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -23,8 +25,8 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 @Component
-public class StockTweets {
-    private static final Logger logger = LogManager.getLogger(StockTweets.class);
+public class StockTweetsDataService {
+    private static final Logger logger = LogManager.getLogger(StockTweetsDataService.class);
 
     private static TweetSearchQuery query = new TweetSearchQuery(TickersAndSources.getSources());
     private static String queryStr = query.getQueryString();

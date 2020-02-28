@@ -1,4 +1,4 @@
-package com.alphasmart.alphaspring.components;
+package com.alphasmart.alphaspring.utils;
 
 import java.util.List;
 

@@ -13,7 +13,7 @@ public class ApplicationLoggerAspect {
 
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
 
-    @Pointcut("within(com.alphasmart.alphaspring.components..*)")
+    @Pointcut("within(com.alphasmart.alphaspring.utils..*)")
     public void componentPoincut() {
     }
 

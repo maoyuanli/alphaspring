@@ -1,5 +1,6 @@
-package com.alphasmart.alphaspring.components;
+package com.alphasmart.alphaspring.services;
 
+import com.alphasmart.alphaspring.utils.TickersAndSources;
 import com.alphasmart.alphaspring.entities.Quote;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 
 @Component
-public class StockQuotes {
+public class StockQuotesDataService {
 
     private static final String QUANDL_API_URL =
             "https://www.quandl.com/api/v3/datasets/EURONEXT/%s.json?api_key=f_tQibQDxz8s2CABjKZU&start_date=%s&end_date=%s";

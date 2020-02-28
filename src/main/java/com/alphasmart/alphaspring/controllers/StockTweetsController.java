@@ -1,6 +1,6 @@
 package com.alphasmart.alphaspring.controllers;
 
-import com.alphasmart.alphaspring.components.StockTweets;
+import com.alphasmart.alphaspring.services.StockTweetsDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 public class StockTweetsController {
 
     @Autowired
-    StockTweets stockTweets;
+    StockTweetsDataService stockTweetsDataService;
 
     @GetMapping("api/tweet")
     public String marketTweet(){
-        return stockTweets.tweetsList();
+        return stockTweetsDataService.tweetsList();
     }
 }
