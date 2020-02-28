@@ -1,13 +1,11 @@
 package com.alphasmart.alphaspring.services;
 
-import com.alphasmart.alphaspring.utils.TickersAndSources;
 import com.alphasmart.alphaspring.entities.Quote;
+import com.alphasmart.alphaspring.utils.TickersAndSources;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

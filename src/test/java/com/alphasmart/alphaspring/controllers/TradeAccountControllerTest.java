@@ -10,21 +10,20 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.Arrays;
 import java.util.List;
 
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class StockTweetsControllerTest {
+class TradeAccountControllerTest {
 
     @Autowired
     WebApplicationContext webApplicationContext;
 
-    private final String QUOTE_URI = "/api/tweet";
+    private final String GET_ACCOUNT_URI = "/api/getaccount/?accountNo=TA001"; // pre-loaded with data.sql
 
-    private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("tweets", "profileImageUrlHttps", "profileImageUrlHttps", "screenName", "text"); // required by frontend
+    private final List<String> EXPECTED_GET_RESPONSE_KEYWORDS = Arrays.asList("trade_account", "account_no","TA001");
 
     @Test
-    void testStockTweetsControllerResponse() throws Exception {
-        RequestTestTemplate.testMvcRequest(webApplicationContext, QUOTE_URI, null, 200, EXPECTED_RESPONSE_KEYWORDS);
-
+    void testGetAccount() throws Exception {
+        RequestTestTemplate.testMvcRequest(webApplicationContext,GET_ACCOUNT_URI,null,200,EXPECTED_GET_RESPONSE_KEYWORDS);
     }
-
 }
