@@ -12,6 +12,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -22,7 +25,9 @@ class TradeOrderControllerTest {
     @Autowired
     WebApplicationContext webApplicationContext;
 
-    private final String ORDER_JSON="{\n" +
+    private final String SET_ORDER_URI = "/api/setorder";
+
+    private final String ORDER_JSON = "{\n" +
             "\t\"order\":\n" +
             "\t{\n" +
             "\t    \"ticker\": \"Mao Technology\",\n" +
@@ -32,15 +37,11 @@ class TradeOrderControllerTest {
             "\t}\n" +
             "}";
 
+    private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("Mao", "Market", "2210.0", "855000");
+
     @Test
     void testSetOrder() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        String uri = "/api/setorder";
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri).contentType(MediaType.APPLICATION_JSON).content(ORDER_JSON)).andReturn();
-        int responseStatus = mvcResult.getResponse().getStatus();
-        String responseContent = mvcResult.getResponse().getContentAsString();
-        assertEquals(200,responseStatus);
-        assertTrue(responseContent.contains("Mao"));
+        RequestTestTemplate.testMvcRequest(webApplicationContext, SET_ORDER_URI, ORDER_JSON, 200, EXPECTED_RESPONSE_KEYWORDS);
     }
 
 }

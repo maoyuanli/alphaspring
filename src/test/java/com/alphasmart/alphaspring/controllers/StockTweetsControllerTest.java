@@ -12,6 +12,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -21,19 +24,13 @@ class StockTweetsControllerTest {
     @Autowired
     WebApplicationContext webApplicationContext;
 
+    private final String QUOTE_URI = "/api/tweet";
+
+    private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("tweets", "profileImageUrlHttps", "profileImageUrlHttps", "screenName", "text"); // required by frontend
+
     @Test
     void testStockTweetsControllerResponse() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        String uri = "/api/tweet";
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri).contentType(MediaType.APPLICATION_JSON)).andReturn();
-        int responseStatus = mvcResult.getResponse().getStatus();
-        String responseContent = mvcResult.getResponse().getContentAsString();
-        assertEquals(200, responseStatus);
-        assertTrue(responseContent.contains("tweets")
-                && responseContent.contains("profileImageUrlHttps")
-                && responseContent.contains("profileImageUrlHttps")
-                && responseContent.contains("screenName")
-                && responseContent.contains("text"));
+        RequestTestTemplate.testMvcRequest(webApplicationContext, QUOTE_URI, null, 200, EXPECTED_RESPONSE_KEYWORDS);
 
     }
 
