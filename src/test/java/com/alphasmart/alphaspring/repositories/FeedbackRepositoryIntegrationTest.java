@@ -1,5 +1,6 @@
-package com.alphasmart.alphaspring.entities;
+package com.alphasmart.alphaspring.repositories;
 
+import com.alphasmart.alphaspring.entities.Feedback;
 import com.alphasmart.alphaspring.repositories.FeedbackRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
