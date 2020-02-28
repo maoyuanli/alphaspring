@@ -1,8 +1,5 @@
 package com.alphasmart.alphaspring.services;
 
-import java.util.HashMap;
-import java.util.List;
-
 import com.alphasmart.alphaspring.utils.TickersAndSources;
 import com.alphasmart.alphaspring.utils.TokenFetcher;
 import com.alphasmart.alphaspring.utils.TweetSearchQuery;
@@ -13,16 +10,11 @@ import com.google.gson.JsonParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
-import twitter4j.Query;
-import twitter4j.QueryResult;
-
-import twitter4j.Status;
-
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-
+import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
+
+import java.util.HashMap;
+import java.util.List;
 
 @Component
 public class StockTweetsDataService {
