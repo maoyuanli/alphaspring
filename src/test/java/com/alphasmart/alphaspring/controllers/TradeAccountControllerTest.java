@@ -33,14 +33,14 @@ class TradeAccountControllerTest {
     final String SET_ACCOUNT_JSON = "{\"tradeaccount\":{\"account_no\":\"TA007\"}}";
 
     @Test
-    void testGetAccount() throws Exception {
+    public void testGetAccount() throws Exception {
         final String GET_ACCOUNT_URI = "/api/getaccount/?accountNo=TA001"; // pre-loaded with data.sql
         final List<String> EXPECTED_GET_ACCOUNT_KEYWORDS = Arrays.asList("trade_account", "account_no", "TA001");
         RequestTestTemplate.testMvcRequest(webApplicationContext, GET_ACCOUNT_URI, null, 200, EXPECTED_GET_ACCOUNT_KEYWORDS);
     }
 
     @Test
-    void testUnauthorizedSetAccount() throws Exception {
+    public void testUnauthorizedSetAccount() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
         MvcResult mvcResult= mockMvc.perform(post(SET_ACCOUNT_URI).with(httpBasic("admin1","pass1"))
                 .contentType(MediaType.APPLICATION_JSON).content(SET_ACCOUNT_JSON)
@@ -55,7 +55,7 @@ class TradeAccountControllerTest {
     }
 
     @Test
-    void testAuthorizedSetAccount() throws Exception{
+    public void testAuthorizedSetAccount() throws Exception{
         String SET_USER_JSON = "{\n" +
                 "\t\"user\":\n" +
                 "\t{\n" +

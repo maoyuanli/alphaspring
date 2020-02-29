@@ -32,7 +32,7 @@ class FeedbackControllerTest {
     private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("created", "successfully", "Snow", "jsnow@postman.com", "1212333", "postman");
 
     @Test
-    void testPostFeedback() throws Exception {
+    public void testPostFeedback() throws Exception {
         RequestTestTemplate.testMvcRequest(webApplicationContext, FEEDBACK_URI, FEEDBACK_JSON, 200, EXPECTED_RESPONSE_KEYWORDS);
     }
 

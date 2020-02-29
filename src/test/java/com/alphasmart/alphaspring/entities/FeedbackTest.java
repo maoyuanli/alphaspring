@@ -20,7 +20,7 @@ class FeedbackTest {
             "}";
 
     @Test
-    void testUnpacking() throws IOException {
+    public void testUnpacking() throws IOException {
         Feedback feedback = new ObjectMapper().readerFor(Feedback.class).readValue(SOURCE_JSON);
         assertEquals("John Snow",feedback.getName());
         assertEquals("jsnow@postman.com",feedback.getEmail());

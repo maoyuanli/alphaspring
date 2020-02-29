@@ -33,7 +33,7 @@ class TradeOrderControllerTest {
     private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("Mao", "Market", "2210.0", "855000");
 
     @Test
-    void testSetOrder() throws Exception {
+    public void testSetOrder() throws Exception {
         RequestTestTemplate.testMvcRequest(webApplicationContext, SET_ORDER_URI, ORDER_JSON, 200, EXPECTED_RESPONSE_KEYWORDS);
     }
 

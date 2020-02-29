@@ -22,7 +22,7 @@ class StockQuotesDataServiceTest {
     }
 
     @Test
-    void testStartAndEndDate() {
+    public void testStartAndEndDate() {
         List<String> expectBeginEndDate = Arrays.asList("2019-03-01","2020-03-01");
         LocalDate fakeToday = LocalDate.of(2020,3,1);
         doReturn(fakeToday).when(stockQuotesDataService).getToday();
@@ -30,7 +30,7 @@ class StockQuotesDataServiceTest {
     }
 
     @Test
-    void testQuotesBundler(){
+    public void testQuotesBundler(){
         String responseBody = stockQuotesDataService.quotesBundler(TickersAndSources.getTickers());
 
         // required by frontend
