@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class StockTweetsDataServiceTest {
 
     @Test
-    void tweetsList() {
+    public void tweetsList() {
         StockTweetsDataService stockTweetsDataService = new StockTweetsDataService();
         String responseBody = stockTweetsDataService.tweetsList();
 

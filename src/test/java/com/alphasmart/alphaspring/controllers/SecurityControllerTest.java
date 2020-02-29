@@ -32,7 +32,7 @@ class SecurityControllerTest {
     private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("id", "userName", "email", "role", "password");
 
     @Test
-    void testSetUserAccount() throws Exception {
+    public void testSetUserAccount() throws Exception {
         RequestTestTemplate.testMvcRequest(webApplicationContext, SETUSER_URI, SET_USER_JSON, 200, EXPECTED_RESPONSE_KEYWORDS);
     }
 

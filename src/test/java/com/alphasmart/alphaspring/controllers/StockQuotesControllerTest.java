@@ -23,7 +23,7 @@ class StockQuotesControllerTest {
 
 
     @Test
-    void testStockQuotesControllerResponse() throws Exception {
+    public void testStockQuotesControllerResponse() throws Exception {
         RequestTestTemplate.testMvcRequest(webApplicationContext, QUOTE_URI, null, 200, EXPECTED_RESPONSE_KEYWORDS);
     }
 }

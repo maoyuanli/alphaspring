@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest
@@ -20,7 +20,7 @@ class TraderOrderRepositoryIntegrationTest {
     TraderOrderRepository traderOrderRepository;
 
     @Test
-    void ifNewTradeOrderSaved_thenSuccess(){
+    public void ifNewTradeOrderSaved_thenSuccess(){
         traderOrderRepository.deleteAll();
         TradeOrder tradeOrder = new TradeOrder("Maotion Tech","Limited Buy","15.5","1000");
         traderOrderRepository.save(tradeOrder);

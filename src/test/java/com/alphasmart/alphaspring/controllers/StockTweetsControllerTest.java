@@ -22,7 +22,7 @@ class StockTweetsControllerTest {
     private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("tweets", "profileImageUrlHttps", "profileImageUrlHttps", "screenName", "text"); // required by frontend
 
     @Test
-    void testStockTweetsControllerResponse() throws Exception {
+    public void testStockTweetsControllerResponse() throws Exception {
         RequestTestTemplate.testMvcRequest(webApplicationContext, QUOTE_URI, null, 200, EXPECTED_RESPONSE_KEYWORDS);
 
     }

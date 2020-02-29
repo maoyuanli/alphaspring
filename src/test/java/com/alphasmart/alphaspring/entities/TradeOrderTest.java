@@ -32,7 +32,7 @@ class TradeOrderTest {
 
 
     @Test
-    void testUnpackingLimitedOrder() throws IOException {
+    public void testUnpackingLimitedOrder() throws IOException {
         TradeOrder tradeOrder = new ObjectMapper()
                 .readerFor(TradeOrder.class)
                 .readValue(LIMITED_ORDER);
@@ -44,7 +44,7 @@ class TradeOrderTest {
     }
 
     @Test
-    void testUnpackingMarketOrder() throws IOException {
+    public void testUnpackingMarketOrder() throws IOException {
         TradeOrder tradeOrder = new ObjectMapper()
                 .readerFor(TradeOrder.class)
                 .readValue(MARKET_ORDER);
