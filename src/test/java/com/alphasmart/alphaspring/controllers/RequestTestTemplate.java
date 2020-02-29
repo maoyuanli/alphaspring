@@ -4,7 +4,6 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -12,7 +11,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 public class RequestTestTemplate {
 
@@ -22,9 +22,9 @@ public class RequestTestTemplate {
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
         MvcResult mvcResult;
         if (postContent != null) {
-            mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri).contentType(MediaType.APPLICATION_JSON).content(postContent)).andReturn();
+            mvcResult = mockMvc.perform(post(uri).contentType(MediaType.APPLICATION_JSON).content(postContent)).andReturn();
         } else {
-            mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri).contentType(MediaType.APPLICATION_JSON)).andReturn();
+            mvcResult = mockMvc.perform(get(uri).contentType(MediaType.APPLICATION_JSON)).andReturn();
         }
         MockHttpServletResponse response = mvcResult.getResponse();
         int responseStatus = response.getStatus();
