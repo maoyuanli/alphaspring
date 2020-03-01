@@ -1,2 +1,3 @@
 .gitignore merge=ours
 src/main/resources/application.properties merge=ours
+gitchain.sh merge=ours
