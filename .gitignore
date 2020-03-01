@@ -33,3 +33,4 @@ build/
 ### token ###
 token.json
 application.properties
+gitchain.sh
