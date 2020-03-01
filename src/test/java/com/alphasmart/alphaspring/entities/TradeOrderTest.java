@@ -10,24 +10,24 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class TradeOrderTest {
 
-    private final String LIMITED_ORDER = "{\n" +
-            "\t\"order\":\n" +
-            "\t{\n" +
-            "\t    \"ticker\": \"Mao Technology\",\n" +
-            "\t    \"order_type\": \"Limited Buy\",\n" +
-            "\t    \"order_price\": \"2210.0\",\n" +
-            "\t    \"order_volumn\": \"855000\"\n" +
-            "\t}\n" +
+    private final String LIMITED_ORDER = "{" +
+            "\"order\":" +
+            "{" +
+            "\"ticker\": \"Mao Technology\"," +
+            "\"order_type\": \"Limited Buy\"," +
+            "\"order_price\": \"2210.0\"," +
+            "\"order_volumn\": \"855000\"" +
+            "}" +
             "}";
 
-    private final String MARKET_ORDER = "{\n" +
-            "\t\"order\":\n" +
-            "\t{\n" +
-            "\t    \"ticker\": \"Mao Technology\",\n" +
-            "\t    \"order_type\": \"Market Buy\",\n" +
-            "\t    \"order_price\": null,\n" +
-            "\t    \"order_volumn\": \"855000\"\n" +
-            "\t}\n" +
+    private final String MARKET_ORDER = "{" +
+            "\"order\":" +
+            "{" +
+            " \"ticker\": \"Mao Technology\"," +
+            "\"order_type\": \"Market Buy\"," +
+            "\"order_price\": null," +
+            "\"order_volumn\": \"855000\"" +
+            "}" +
             "}";
 
 

@@ -17,14 +17,14 @@ class TradeOrderControllerTest {
 
     private final String SET_ORDER_URI = "/api/setorder";
 
-    private final String ORDER_JSON = "{\n" +
-            "\t\"order\":\n" +
-            "\t{\n" +
-            "\t    \"ticker\": \"Mao Technology\",\n" +
-            "\t    \"order_type\": \"Market\",\n" +
-            "\t    \"order_price\": \"2210.0\",\n" +
-            "\t    \"order_volumn\": \"855000\"\n" +
-            "\t}\n" +
+    private final String ORDER_JSON = "{" +
+            "\"order\":" +
+            "{" +
+            "\"ticker\": \"Mao Technology\"," +
+            "\"order_type\": \"Market\"," +
+            "\"order_price\": \"2210.0\"," +
+            "\"order_volumn\": \"855000\"" +
+            "}" +
             "}";
 
     private final String EXPECTED_RESPONSE_LOOSE_JSON =

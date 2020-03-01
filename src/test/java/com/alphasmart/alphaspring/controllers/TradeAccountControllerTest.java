@@ -57,14 +57,14 @@ class TradeAccountControllerTest {
 
     @Test
     public void testAuthorizedSetAccount() throws Exception{
-        String SET_USER_JSON = "{\n" +
-                "\t\"user\":\n" +
-                "\t{\n" +
-                "\t    \"user_name\": \"admin1\",\n" +
-                "\t    \"password\":\"pass1\",\n" +
-                "\t    \"email\":\"admin1@spring.com\",\n" +
-                "\t    \"role\":\"ADMIN\"\n" +
-                "\t}\n" +
+        String SET_USER_JSON = "{" +
+                "\"user\":" +
+                "{" +
+                "\"user_name\": \"admin1\"," +
+                "\"password\":\"pass1\"," +
+                "\"email\":\"admin1@spring.com\"," +
+                "\"role\":\"ADMIN\"" +
+                "}" +
                 "}";
 
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
