@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FeedbackTest {
 
-    private final String SOURCE_JSON = "{\n" +
-            "\t\"feedback\": \n" +
-            "\t\t{\n" +
-            "            \"name\": \"John Snow\",\n" +
-            "            \"email\": \"jsnow@postman.com\",\n" +
-            "            \"phone\": \"1212333\",\n" +
-            "            \"comment\": \"from postman test\"\n" +
-            "        }\n" +
+    private final String SOURCE_JSON = "{" +
+            "\"feedback\": " +
+            "{" +
+            "\"name\": \"John Snow\"," +
+            "\"email\": \"jsnow@postman.com\"," +
+            "\"phone\": \"1212333\"," +
+            "\"comment\": \"from postman test\"" +
+            "}" +
             "}";
 
     @Test

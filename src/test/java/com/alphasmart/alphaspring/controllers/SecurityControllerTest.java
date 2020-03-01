@@ -19,14 +19,14 @@ class SecurityControllerTest {
 
     private final String SETUSER_URI = "/api/setuser";
 
-    private final String SET_USER_JSON = "{\n" +
-            "\t\"user\":\n" +
-            "\t{\n" +
-            "\t    \"user_name\": \"admin1\",\n" +
-            "\t    \"password\":\"pass1\",\n" +
-            "\t    \"email\":\"admin1@spring.com\",\n" +
-            "\t    \"role\":\"ADMIN\"\n" +
-            "\t}\n" +
+    private final String SET_USER_JSON = "{" +
+            "\"user\":" +
+            "{" +
+            "\"user_name\": \"admin1\"," +
+            "\"password\":\"pass1\"," +
+            "\"email\":\"admin1@spring.com\"," +
+            "\"role\":\"ADMIN\"" +
+            "}" +
             "}";
 
     private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("id", "userName", "email", "role", "password");
