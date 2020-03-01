@@ -1,14 +1,24 @@
 package com.alphasmart.alphaspring.services;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
 class StockTweetsDataServiceTest {
+
+    @Autowired
+    StockTweetsDataService stockTweetsDataService;
 
     @Test
     public void tweetsList() {
-        StockTweetsDataService stockTweetsDataService = new StockTweetsDataService();
         String responseBody = stockTweetsDataService.tweetsList();
 
         // required by frontend
