@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -47,14 +46,13 @@ public class StockTweetsDataService {
 
     public static Twitter twitterInstance() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
-        TokenFetcher tokenFetcher = new TokenFetcher();
-        HashMap<String, String> twitterTokens = tokenFetcher.fetchToken("token.json");
+        TokenFetcher tokenFetcher = new TokenFetcher("token.json");
 
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey(twitterTokens.get("api_key"))
-                .setOAuthConsumerSecret(twitterTokens.get("api_secret"))
-                .setOAuthAccessToken(twitterTokens.get("access_token"))
-                .setOAuthAccessTokenSecret(twitterTokens.get("access_secret"));
+                .setOAuthConsumerKey(tokenFetcher.fetchToken("api_key"))
+                .setOAuthConsumerSecret(tokenFetcher.fetchToken("api_secret"))
+                .setOAuthAccessToken(tokenFetcher.fetchToken("access_token"))
+                .setOAuthAccessTokenSecret(tokenFetcher.fetchToken("access_secret"));
         TwitterFactory tf = new TwitterFactory(cb.build());
         return tf.getInstance();
     }
