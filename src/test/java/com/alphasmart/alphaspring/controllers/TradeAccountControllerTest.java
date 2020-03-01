@@ -2,6 +2,7 @@ package com.alphasmart.alphaspring.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -80,9 +81,7 @@ class TradeAccountControllerTest {
         String responseContent = response.getContentAsString();
 
         assertEquals(200, responseStatus);
-        assertTrue(responseContent.contains("id")
-                && responseContent.contains("accountNo")
-                && responseContent.contains("TA007")
-        );
+        JSONAssert.assertEquals("{accountNo: TA007, tradeOrders: null}",responseContent,false);
+
     }
 }

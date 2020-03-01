@@ -7,9 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.Arrays;
-import java.util.List;
-
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -30,11 +27,17 @@ class TradeOrderControllerTest {
             "\t}\n" +
             "}";
 
-    private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("Mao", "Market", "2210.0", "855000");
+    private final String EXPECTED_RESPONSE_LOOSE_JSON =
+            "{ticker: \"Mao Technology\"," +
+                    "orderType: Market," +
+                    "orderPrice: \"2210.0\"," +
+                    "orderVolumn: \"855000\"," +
+                    "tradeAccount: null}";
 
     @Test
     public void testSetOrder() throws Exception {
-        RequestTestTemplate.testMvcRequest(webApplicationContext, SET_ORDER_URI, ORDER_JSON, 200, EXPECTED_RESPONSE_KEYWORDS);
+        RequestTestTemplate.testMvcRequest(webApplicationContext, SET_ORDER_URI, ORDER_JSON,
+                200, EXPECTED_RESPONSE_LOOSE_JSON,false);
     }
 
 }

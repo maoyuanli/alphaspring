@@ -7,9 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.Arrays;
-import java.util.List;
-
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 class FeedbackControllerTest {
@@ -29,11 +26,13 @@ class FeedbackControllerTest {
             "}";
 
 
-    private final List<String> EXPECTED_RESPONSE_KEYWORDS = Arrays.asList("created", "successfully", "Snow", "jsnow@postman.com", "1212333", "postman");
+    private final String EXPECTED_RESPONSE_STRICT_JSON =
+            "{success: \"Feedback created successfully: John Snow | jsnow@postman.com | 1212333 | from postman test\"}";
 
     @Test
     public void testPostFeedback() throws Exception {
-        RequestTestTemplate.testMvcRequest(webApplicationContext, FEEDBACK_URI, FEEDBACK_JSON, 200, EXPECTED_RESPONSE_KEYWORDS);
+        RequestTestTemplate.testMvcRequest(webApplicationContext, FEEDBACK_URI, FEEDBACK_JSON,
+                200, EXPECTED_RESPONSE_STRICT_JSON,true);
     }
 
 }
