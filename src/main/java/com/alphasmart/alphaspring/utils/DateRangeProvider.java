@@ -1,14 +1,12 @@
 package com.alphasmart.alphaspring.utils;
 
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class DateRangeProvider {
+
 
     public List<String> startAndEndDate(long yearAgo) {
         List<String> dateRangePair = new ArrayList<>();
