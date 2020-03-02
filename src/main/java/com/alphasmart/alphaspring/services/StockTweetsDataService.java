@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
@@ -17,12 +18,15 @@ import java.util.List;
 
 @Service
 public class StockTweetsDataService {
+
     private static final Logger logger = LogManager.getLogger(StockTweetsDataService.class);
 
-    private static TweetSearchQuery query = new TweetSearchQuery(TickersAndSources.getSources());
-    private static String queryStr = query.getQueryString();
+    @Autowired
+    TweetSearchQuery tweetSearchQuery;
 
     public String tweetsList() {
+        tweetSearchQuery.setSourceList(TickersAndSources.getSources());
+        String queryStr = tweetSearchQuery.getQueryString();
         Twitter twitter = twitterInstance();
         Query query = new Query();
         query.count(100).setLang("en");
