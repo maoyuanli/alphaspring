@@ -1,9 +1,19 @@
 package com.alphasmart.alphaspring.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public class TweetSearchQuery {
+
     private List<String> sourceList;
+
+    public TweetSearchQuery(){}
+
+    public void setSourceList(List<String> sourceList) {
+        this.sourceList = sourceList;
+    }
 
     public TweetSearchQuery(List<String> sourceList) {
         this.sourceList = sourceList;
