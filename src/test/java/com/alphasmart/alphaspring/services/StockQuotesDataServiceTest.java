@@ -1,6 +1,5 @@
 package com.alphasmart.alphaspring.services;
 
-import com.alphasmart.alphaspring.utils.TickersAndSources;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ class StockQuotesDataServiceTest {
 
     @Test
     public void testQuotesBundler() {
-        String responseBody = stockQuotesDataService.quotesBundler(TickersAndSources.getTickers());
+        String responseBody = stockQuotesDataService.quotesBundler();
 
         // required by frontend
         assertTrue(responseBody.contains("quotes")

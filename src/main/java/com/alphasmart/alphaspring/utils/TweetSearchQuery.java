@@ -15,13 +15,13 @@ public class TweetSearchQuery {
     }
 
     private static class QueryBuilder{
-        private final String FROM_OPERATOR = "FROM:";
-        private final String OR_OPERATOR = " OR ";
 
         private StringBuilder stringBuilder = new StringBuilder();
 
         public QueryBuilder withSource(String source){
-            stringBuilder = stringBuilder.append(FROM_OPERATOR).append(source).append(OR_OPERATOR);
+            String FROM_OPERATOR = "FROM:";
+            String OR_OPERATOR = " OR ";
+            stringBuilder.append(FROM_OPERATOR).append(source).append(OR_OPERATOR);
             return this;
         }
         public String build(){
@@ -30,7 +30,7 @@ public class TweetSearchQuery {
         }
 
         public String buildQueryFromList(List<String> sources){
-            sources.forEach(source->withSource(source));
+            sources.forEach(this::withSource);
             return build();
         }
     }

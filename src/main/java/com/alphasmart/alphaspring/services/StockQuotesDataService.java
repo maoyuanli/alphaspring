@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,21 +19,22 @@ import java.util.List;
 @Service
 public class StockQuotesDataService {
 
-    DateRangeProvider dateRangeProvider = new DateRangeProvider();
+    @Autowired
+    DateRangeProvider dateRangeProvider;
 
-    TokenFetcher tokenFetcher = new TokenFetcher("token.json");
-    private final String QUANDL_TOKEN = tokenFetcher.fetchToken("quandl_key");
-    private final String QUANDL_API_URL = "https://www.quandl.com/api/v3/datasets/EURONEXT/%s.json?api_key=%s&start_date=%s&end_date=%s";
-    private ArrayList<String> tickers = TickersAndSources.getTickers();
-    private List<String> startEndDate = dateRangeProvider.startAndEndDate(1);
-    private String startDate = startEndDate.get(0);
-    private String endDate = startEndDate.get(1);
 
     public String getQuote() {
-        return quotesBundler(tickers);
+        return quotesBundler();
     }
 
-    public String quotesBundler(ArrayList<String> tickers) {
+    public String quotesBundler() {
+        TokenFetcher tokenFetcher = new TokenFetcher("token.json");
+        String QUANDL_TOKEN = tokenFetcher.fetchToken("quandl_key");
+        String QUANDL_API_URL = "https://www.quandl.com/api/v3/datasets/EURONEXT/%s.json?api_key=%s&start_date=%s&end_date=%s";
+        ArrayList<String> tickers = TickersAndSources.getTickers();
+        List<String> startEndDate = dateRangeProvider.startAndEndDate(1);
+        String startDate = startEndDate.get(0);
+        String endDate = startEndDate.get(1);
         RestTemplate restTemplate = new RestTemplate();
         JsonArray quoteJsonArray = new JsonArray();
         tickers.forEach(ticker -> {
