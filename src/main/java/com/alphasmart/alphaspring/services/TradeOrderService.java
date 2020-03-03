@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class TradeOrderService {
 
+    private TraderOrderRepository traderOrderRepository;
+
     @Autowired
-    TraderOrderRepository traderOrderRepository;
+    public TradeOrderService(TraderOrderRepository traderOrderRepository) {
+        this.traderOrderRepository = traderOrderRepository;
+    }
 
     public TradeOrder save(TradeOrder tradeOrder){
         return traderOrderRepository.save(tradeOrder);

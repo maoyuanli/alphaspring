@@ -19,9 +19,12 @@ import java.util.List;
 @Service
 public class StockQuotesDataService {
 
-    @Autowired
-    DateRangeProvider dateRangeProvider;
+    private DateRangeProvider dateRangeProvider;
 
+    @Autowired
+    public StockQuotesDataService(DateRangeProvider dateRangeProvider) {
+        this.dateRangeProvider = dateRangeProvider;
+    }
 
     public String getQuote() {
         return quotesBundler();

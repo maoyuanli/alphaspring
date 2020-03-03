@@ -8,8 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserAccountService {
 
+    private UserAccountRepository userAccountRepository;
+
     @Autowired
-    UserAccountRepository userAccountRepository;
+    public UserAccountService(UserAccountRepository userAccountRepository) {
+        this.userAccountRepository = userAccountRepository;
+    }
 
     public UserAccount save(UserAccount userAccount){
         return userAccountRepository.save(userAccount);

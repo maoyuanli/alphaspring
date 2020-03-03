@@ -14,8 +14,13 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class TradeOrderController {
+
+    private TradeOrderService tradeOrderService;
+
     @Autowired
-    TradeOrderService tradeOrderService;
+    public TradeOrderController(TradeOrderService tradeOrderService) {
+        this.tradeOrderService = tradeOrderService;
+    }
 
     @GetMapping("api/getorder")
     public String getTradeOrder(){

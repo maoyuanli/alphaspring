@@ -19,11 +19,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final String authQuery =
             "select user_name, role from user_account where user_name = ?";
 
-    @Autowired
-    DataSource dataSource;
+
+    private DataSource dataSource;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    public SecurityConfig(DataSource dataSource, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.dataSource = dataSource;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

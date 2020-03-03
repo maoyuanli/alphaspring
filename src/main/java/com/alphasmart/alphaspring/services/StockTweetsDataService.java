@@ -21,8 +21,12 @@ public class StockTweetsDataService {
 
     private static final Logger logger = LogManager.getLogger(StockTweetsDataService.class);
 
+    private TweetSearchQuery tweetSearchQuery;
+
     @Autowired
-    TweetSearchQuery tweetSearchQuery;
+    public StockTweetsDataService(TweetSearchQuery tweetSearchQuery) {
+        this.tweetSearchQuery = tweetSearchQuery;
+    }
 
     public String tweetsList() {
         tweetSearchQuery.setSourceList(TickersAndSources.getSources());

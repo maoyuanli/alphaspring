@@ -10,8 +10,12 @@ import java.util.Optional;
 @Service
 public class TradeAccountService {
 
+    private TradeAccountRepository tradeAccountRepository;
+
     @Autowired
-    TradeAccountRepository tradeAccountRepository;
+    public TradeAccountService(TradeAccountRepository tradeAccountRepository) {
+        this.tradeAccountRepository = tradeAccountRepository;
+    }
 
     public TradeAccount save(TradeAccount tradeAccount){
         return tradeAccountRepository.save(tradeAccount);
