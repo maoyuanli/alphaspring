@@ -17,11 +17,11 @@ public class TradeAccountService {
         this.tradeAccountRepository = tradeAccountRepository;
     }
 
-    public TradeAccount save(TradeAccount tradeAccount){
+    public TradeAccount save(TradeAccount tradeAccount) {
         return tradeAccountRepository.save(tradeAccount);
     }
 
-    public Optional<TradeAccount> findTradeAccountByAccountNo(String accountNo){
+    public Optional<TradeAccount> findTradeAccountByAccountNo(String accountNo) {
         return tradeAccountRepository.findTradeAccountByAccountNo(accountNo);
     }
 }

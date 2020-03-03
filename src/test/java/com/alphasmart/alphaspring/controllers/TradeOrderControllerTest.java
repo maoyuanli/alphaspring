@@ -37,7 +37,7 @@ class TradeOrderControllerTest {
     @Test
     public void testSetOrder() throws Exception {
         RequestTestTemplate.testMvcRequest(webApplicationContext, SET_ORDER_URI, ORDER_JSON,
-                200, EXPECTED_RESPONSE_LOOSE_JSON,false);
+                200, EXPECTED_RESPONSE_LOOSE_JSON, false);
     }
 
 }

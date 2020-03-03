@@ -25,7 +25,7 @@ class StockTweetsDataServiceTest {
                 && responseBody.contains("profileImageUrlHttps")
                 && responseBody.contains("profileImageUrlHttps")
                 && responseBody.contains("screenName")
-                && responseBody.contains("text") );
+                && responseBody.contains("text"));
     }
 
 }

@@ -25,10 +25,10 @@ public class TradeOrder {
     private TradeAccount tradeAccount;
 
     @JsonProperty("order")
-    private void unpackRawTradeOrder(Map<String,Object> order){
+    private void unpackRawTradeOrder(Map<String, Object> order) {
         this.ticker = (String) order.get("ticker");
         this.orderType = (String) order.get("order_type");
-        this.orderPrice = (String)order.get("order_price");
+        this.orderPrice = (String) order.get("order_price");
         this.orderVolumn = (String) order.get("order_volumn");
     }
 

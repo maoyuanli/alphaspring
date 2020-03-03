@@ -17,11 +17,11 @@ public class TradeOrderService {
         this.traderOrderRepository = traderOrderRepository;
     }
 
-    public TradeOrder save(TradeOrder tradeOrder){
+    public TradeOrder save(TradeOrder tradeOrder) {
         return traderOrderRepository.save(tradeOrder);
     }
 
-    public List<TradeOrder> findAll(){
+    public List<TradeOrder> findAll() {
         return (List<TradeOrder>) traderOrderRepository.findAll();
     }
 }

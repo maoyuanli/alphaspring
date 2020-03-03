@@ -15,11 +15,11 @@ public class Dataset {
     private String frequency;
     private String type;
     private String premium;
-    private String  limit;
-    private String  transform;
-    private String  column_index;
-    private String  start_date;
-    private String  end_date;
+    private String limit;
+    private String transform;
+    private String column_index;
+    private String start_date;
+    private String end_date;
     private ArrayList<Object> data;
 
     public Dataset() {
