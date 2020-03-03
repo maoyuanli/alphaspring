@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class FeedbackController {
 
+    private FeedbackService feedbackService;
+
     @Autowired
-    FeedbackService feedbackService;
+    public FeedbackController(FeedbackService feedbackService) {
+        this.feedbackService = feedbackService;
+    }
 
     @PostMapping("api/feedback")
     public ResponseEntity handleFeedback(@RequestBody Feedback feedback) {

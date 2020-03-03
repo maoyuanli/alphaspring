@@ -9,8 +9,13 @@ import java.util.Optional;
 
 @RestController
 public class TradeAccountController {
+
+    private TradeAccountService tradeAccountService;
+
     @Autowired
-    TradeAccountService tradeAccountService;
+    public TradeAccountController(TradeAccountService tradeAccountService) {
+        this.tradeAccountService = tradeAccountService;
+    }
 
     @PostMapping("api/setaccount")
     public TradeAccount newTradeAccount(@RequestBody TradeAccount tradeAccount) {

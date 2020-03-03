@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class StockQuotesController {
 
+    private StockQuotesDataService stockQuotesDataService;
+
     @Autowired
-    StockQuotesDataService stockQuotesDataService;
+    public StockQuotesController(StockQuotesDataService stockQuotesDataService) {
+        this.stockQuotesDataService = stockQuotesDataService;
+    }
 
     @GetMapping("api/quote")
     public String featuredStocksQuote() {

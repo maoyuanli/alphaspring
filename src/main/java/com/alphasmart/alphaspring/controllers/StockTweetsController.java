@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class StockTweetsController {
 
+    private StockTweetsDataService stockTweetsDataService;
+
     @Autowired
-    StockTweetsDataService stockTweetsDataService;
+    public StockTweetsController(StockTweetsDataService stockTweetsDataService) {
+        this.stockTweetsDataService = stockTweetsDataService;
+    }
 
     @GetMapping("api/tweet")
     public String marketTweet(){

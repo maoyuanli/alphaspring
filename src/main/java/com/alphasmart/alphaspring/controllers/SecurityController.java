@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SecurityController {
 
+    private UserAccountService userAccountService;
+
     @Autowired
-    UserAccountService userAccountService;
+    public SecurityController(UserAccountService userAccountService) {
+        this.userAccountService = userAccountService;
+    }
 
     @PostMapping("api/setuser")
     public UserAccount newUserAccount(@RequestBody UserAccount userAccount){
