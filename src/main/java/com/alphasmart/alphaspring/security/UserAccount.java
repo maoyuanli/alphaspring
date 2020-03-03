@@ -17,14 +17,13 @@ public class UserAccount {
     private Long id;
     private String userName;
     private String email;
-    private boolean enabled=true;
+    private boolean enabled = true;
     private String role;
     private String password;
 
 
-
     @JsonProperty("user")
-    private void unpackRawUserAccount(Map<String, Object> user){
+    private void unpackRawUserAccount(Map<String, Object> user) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         this.userName = (String) user.get("user_name");
         this.email = (String) user.get("email");

@@ -15,7 +15,7 @@ public class UserAccountService {
         this.userAccountRepository = userAccountRepository;
     }
 
-    public UserAccount save(UserAccount userAccount){
+    public UserAccount save(UserAccount userAccount) {
         return userAccountRepository.save(userAccount);
     }
 }

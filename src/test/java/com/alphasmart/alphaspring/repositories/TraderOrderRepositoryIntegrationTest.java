@@ -20,16 +20,16 @@ class TraderOrderRepositoryIntegrationTest {
     TraderOrderRepository traderOrderRepository;
 
     @Test
-    public void ifNewTradeOrderSaved_thenSuccess(){
+    public void ifNewTradeOrderSaved_thenSuccess() {
         traderOrderRepository.deleteAll();
-        TradeOrder tradeOrder = new TradeOrder("Maotion Tech","Limited Buy","15.5","1000");
+        TradeOrder tradeOrder = new TradeOrder("Maotion Tech", "Limited Buy", "15.5", "1000");
         traderOrderRepository.save(tradeOrder);
-        assertEquals(1, ((List<TradeOrder>)traderOrderRepository.findAll()).size()); // initialized 3 in data.sql
+        assertEquals(1, ((List<TradeOrder>) traderOrderRepository.findAll()).size()); // initialized 3 in data.sql
         TradeOrder savedOrder = ((List<TradeOrder>) traderOrderRepository.findAll()).get(0);
         assertEquals("Maotion Tech", savedOrder.getTicker());
         assertEquals("Limited Buy", savedOrder.getOrderType());
         assertEquals("15.5", savedOrder.getOrderPrice());
-        assertEquals("1000",savedOrder.getOrderVolumn());
+        assertEquals("1000", savedOrder.getOrderVolumn());
     }
 
 }

@@ -43,7 +43,7 @@ class TradeAccountControllerTest {
     @Test
     public void testUnauthorizedSetAccount() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).apply(springSecurity()).build();
-        MvcResult mvcResult= mockMvc.perform(post(SET_ACCOUNT_URI).with(httpBasic("admin1","pass1"))
+        MvcResult mvcResult = mockMvc.perform(post(SET_ACCOUNT_URI).with(httpBasic("admin1", "pass1"))
                 .contentType(MediaType.APPLICATION_JSON).content(SET_ACCOUNT_JSON)
         ).andReturn();
 
@@ -56,7 +56,7 @@ class TradeAccountControllerTest {
     }
 
     @Test
-    public void testAuthorizedSetAccount() throws Exception{
+    public void testAuthorizedSetAccount() throws Exception {
         String SET_USER_JSON = "{" +
                 "\"user\":" +
                 "{" +
@@ -72,7 +72,7 @@ class TradeAccountControllerTest {
         mockMvc.perform(post("/api/setuser").contentType(MediaType.APPLICATION_JSON).content(SET_USER_JSON))
                 .andReturn();
 
-        MvcResult mvcResult= mockMvc.perform(post(SET_ACCOUNT_URI).with(httpBasic("admin1","pass1"))
+        MvcResult mvcResult = mockMvc.perform(post(SET_ACCOUNT_URI).with(httpBasic("admin1", "pass1"))
                 .contentType(MediaType.APPLICATION_JSON).content(SET_ACCOUNT_JSON)
         ).andReturn();
 
@@ -81,7 +81,7 @@ class TradeAccountControllerTest {
         String responseContent = response.getContentAsString();
 
         assertEquals(200, responseStatus);
-        JSONAssert.assertEquals("{accountNo: TA007, tradeOrders: null}",responseContent,false);
+        JSONAssert.assertEquals("{accountNo: TA007, tradeOrders: null}", responseContent, false);
 
     }
 }

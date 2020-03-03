@@ -18,7 +18,7 @@ public class SecurityController {
     }
 
     @PostMapping("api/setuser")
-    public UserAccount newUserAccount(@RequestBody UserAccount userAccount){
+    public UserAccount newUserAccount(@RequestBody UserAccount userAccount) {
         return userAccountService.save(userAccount);
     }
 }

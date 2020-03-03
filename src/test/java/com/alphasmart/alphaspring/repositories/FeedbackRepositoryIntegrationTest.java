@@ -20,17 +20,17 @@ public class FeedbackRepositoryIntegrationTest {
     FeedbackRepository feedbackRepository;
 
     @Test
-    public void ifNewFeedbackSaved_thenSuccess(){
-        Feedback feedback = new Feedback("John Doe","jd@gmail.com","405-909-2934","good job");
+    public void ifNewFeedbackSaved_thenSuccess() {
+        Feedback feedback = new Feedback("John Doe", "jd@gmail.com", "405-909-2934", "good job");
         feedbackRepository.save(feedback);
-        assertEquals(4,((List<Feedback>) feedbackRepository.findAll()).size()); // initialized 3 in data.sql
+        assertEquals(4, ((List<Feedback>) feedbackRepository.findAll()).size()); // initialized 3 in data.sql
         Optional<List<Feedback>> jennyFeedbacks = feedbackRepository
                 .findFeedbacksByEmail("Jenny.H@bell.ca");
         assert jennyFeedbacks.isPresent();
-        assertEquals("Jenny",jennyFeedbacks.get().get(0).getName());
+        assertEquals("Jenny", jennyFeedbacks.get().get(0).getName());
         Optional<List<Feedback>> johnFeedbacks = feedbackRepository
                 .findFeedbacksByEmail("jd@gmail.com");
         assert johnFeedbacks.isPresent();
-        assertEquals("405-909-2934",johnFeedbacks.get().get(0).getPhone());
+        assertEquals("405-909-2934", johnFeedbacks.get().get(0).getPhone());
     }
 }

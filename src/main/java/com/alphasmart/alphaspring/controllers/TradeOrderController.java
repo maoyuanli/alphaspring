@@ -23,19 +23,18 @@ public class TradeOrderController {
     }
 
     @GetMapping("api/getorder")
-    public String getTradeOrder(){
+    public String getTradeOrder() {
         List<TradeOrder> orders = tradeOrderService.findAll();
         Gson gson = new Gson();
         String ordersStr = gson.toJson(orders);
         JsonArray orderJsonArr = (JsonArray) new JsonParser().parse(ordersStr);
         JsonObject orderWrapped = new JsonObject();
         orderWrapped.add("orders", orderJsonArr);
-        String orderStrRslt = orderWrapped.toString();
-        return orderStrRslt;
+        return orderWrapped.toString();
     }
 
     @PostMapping("api/setorder")
-    public TradeOrder newTradeOrder(@RequestBody TradeOrder newTradeOrder){
+    public TradeOrder newTradeOrder(@RequestBody TradeOrder newTradeOrder) {
         return tradeOrderService.save(newTradeOrder);
     }
 

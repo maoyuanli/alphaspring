@@ -40,11 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable() // for localhost testing
-            .authorizeRequests()
-            .antMatchers("/api/setaccount/").hasAuthority("ADMIN")
-            .antMatchers("/api/**").permitAll()
-            .and().httpBasic();
+                .csrf().disable() // for localhost testing
+                .authorizeRequests()
+                .antMatchers("/api/setaccount/").hasAuthority("ADMIN")
+                .antMatchers("/api/**").permitAll()
+                .and().httpBasic();
     }
 
 }

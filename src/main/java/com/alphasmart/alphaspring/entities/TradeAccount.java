@@ -13,17 +13,18 @@ public class TradeAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String accountNo;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "tradeAccount")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tradeAccount")
     private List<TradeOrder> tradeOrders;
 
     @JsonProperty("tradeaccount")
-    private void unpackRawTradeAccount(Map<String, Object> account){
+    private void unpackRawTradeAccount(Map<String, Object> account) {
         this.accountNo = (String) account.get("account_no");
     }
 
-    protected TradeAccount(){}
+    protected TradeAccount() {
+    }
 
-    public TradeAccount(Long id, String accountNo, List<TradeOrder> tradeOrders){
+    public TradeAccount(Long id, String accountNo, List<TradeOrder> tradeOrders) {
         this.id = id;
         this.accountNo = accountNo;
         this.tradeOrders = tradeOrders;

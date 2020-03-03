@@ -18,7 +18,7 @@ public class StockTweetsController {
     }
 
     @GetMapping("api/tweet")
-    public String marketTweet(){
+    public String marketTweet() {
         return stockTweetsDataService.tweetsList();
     }
 }

@@ -37,9 +37,9 @@ class TradeOrderTest {
                 .readerFor(TradeOrder.class)
                 .readValue(LIMITED_ORDER);
 
-        assertEquals("Mao Technology",tradeOrder.getTicker());
-        assertEquals("Limited Buy",tradeOrder.getOrderType());
-        assertEquals("2210.0",tradeOrder.getOrderPrice());
+        assertEquals("Mao Technology", tradeOrder.getTicker());
+        assertEquals("Limited Buy", tradeOrder.getOrderType());
+        assertEquals("2210.0", tradeOrder.getOrderPrice());
         assertEquals("855000", tradeOrder.getOrderVolumn());
     }
 
@@ -49,8 +49,8 @@ class TradeOrderTest {
                 .readerFor(TradeOrder.class)
                 .readValue(MARKET_ORDER);
 
-        assertEquals("Mao Technology",tradeOrder.getTicker());
-        assertEquals("Market Buy",tradeOrder.getOrderType());
+        assertEquals("Mao Technology", tradeOrder.getTicker());
+        assertEquals("Market Buy", tradeOrder.getOrderType());
         assertNull(tradeOrder.getOrderPrice());
         assertEquals("855000", tradeOrder.getOrderVolumn());
     }
